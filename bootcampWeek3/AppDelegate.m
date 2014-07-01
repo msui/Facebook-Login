@@ -8,16 +8,91 @@
 
 #import "AppDelegate.h"
 
+#import "LoginViewController.h"
+#import "homeViewController.h"
+#import "PeopleViewController.h"
+#import "SettingsViewController.h"
+#import "MessagesViewController.h"
+#import "NotificationsViewController.h"
+
+
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     // Override point for customization after application launch.
+    
+    LoginViewController *loginviewcontroller = [[LoginViewController alloc] init];
+    
+    
+//  --------------
+    
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    
+//  --------------
+    
+    homeViewController *homeviewcontroller = [[homeViewController alloc] init];
+    
+    UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:homeviewcontroller];
+    
+    homeNavigationController.tabBarItem.title = @"Home";
+    
+//  --------------
+    
+    PeopleViewController *peopleViewController = [[PeopleViewController alloc] init];
+    
+    UINavigationController *peopleNavigationController = [[UINavigationController alloc] initWithRootViewController:peopleViewController];
+    
+    peopleNavigationController.tabBarItem.title = @"People";
+    
+//  --------------
+    
+    SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
+    
+    UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    
+    settingsNavigationController.tabBarItem.title = @"Settings";
+    
+//  --------------
+
+    MessagesViewController *messagesViewController = [[MessagesViewController alloc] init];
+    
+    UINavigationController *messagesNavigationController = [[UINavigationController alloc] initWithRootViewController:messagesViewController];
+    
+    messagesNavigationController.tabBarItem.title = @"Messages";
+    
+//  --------------
+    
+    NotificationsViewController *notificationsViewController = [[NotificationsViewController alloc] init];
+    
+    UINavigationController *notificationsNavigationController = [[UINavigationController alloc] initWithRootViewController:notificationsViewController];
+    
+    notificationsNavigationController.tabBarItem.title = @"Notices";
+    
+//  --------------
+    
+    tabBarController.viewControllers = @[homeNavigationController, peopleNavigationController, settingsNavigationController, messagesNavigationController, notificationsViewController];
+    
+//  --------------
+    
+    self.window.rootViewController = loginviewcontroller;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+    
+    
+//-   (IBAction)onUpLoginButton:(id)sender {
+//    UIViewController *vc = [[self.homeViewController alloc] init]]
+//    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    [self presentViewController:vc animated:YES completion:nil]
+//}
+    
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
